@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,7 @@ public class TestShapes {
          -radius of the circle = 4
 
 
+
          Then print each object
          And print area and perimeters of each object
          Find and print the object which has the largest area
@@ -40,7 +43,37 @@ public class TestShapes {
 
          Circle has the largest area as 50.24
          */
+        Rectangle rectangle = new Rectangle();
+        rectangle.setWidth(5.5);
+        rectangle.setHeight(6);
 
+        Square square = new Square();
+        square.setSide(2.5);
+
+        Circle circle = new Circle();
+        circle.setRadius(4);
+
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(rectangle);
+        shapes.add(square);
+        shapes.add(circle);
+
+        for (Shape shape : shapes) {
+            System.out.println(shape);
+            System.out.println("Area of the " + shape.getClass().getSimpleName() + " is = " + shape.area());
+            System.out.println("Perimeter of the " + shape.getClass().getSimpleName() + " is = " + shape.perimeter());
+            System.out.println();
+        }
+
+        Shape largestArea = null;
+        double max = 0;
+        for (Shape shape : shapes) {
+            if (shape.area() > max) {
+                max = shape.area();
+                largestArea = shape;
+            }
+        }
+        System.out.println(largestArea.getClass().getSimpleName() + " has the largest area as " + max);
 
     }
 }
